@@ -81,7 +81,10 @@ Route::group([
         'as' => 'admin.blog.post.delete'
     ]);
 
-
+    Route::get('/blog/categories', [
+        'uses' => 'CategoryController@getCategoryIndex',
+        'as' => 'admin.blog.categories'
+    ]);
 
 });
 
