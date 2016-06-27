@@ -18,24 +18,31 @@
             </header>
             <section>
                 <ul>
-                    <li>No Posts</li>
-                    <li>
-                        <article>
-                            <div class="post-info">
-                                <h3>Post Title</h3>
-                                <span class="info">Post Author | Date</span>
-                            </div>
-                            <div class="edit">
-                                <nav>
-                                    <ul>
-                                        <li><a href="">View Post</a></li>
-                                        <li><a href="">Edit</a></li>
-                                        <li><a href="" class="danger">Delete</a></li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </article>
-                    </li>
+                    @if(count($posts) == 0)
+                        <li>No Posts</li>
+                    @else
+                        @foreach($posts as $post)
+                            <li>
+                                <article>
+                                    <div class="post-info">
+                                        <h3>{{ $post->title }}</h3>
+                                        <span class="info">{{ $post->author }} | {{ $post->created_at }}</span>
+                                    </div>
+                                    <div class="edit">
+                                        <nav>
+                                            <ul>
+                                                <li><a href="">View Post</a></li>
+                                                <li><a href="">Edit</a></li>
+                                                <li><a href="" class="danger">Delete</a></li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </article>
+                            </li>
+                        @endforeach
+
+                    @endif
+
                 </ul>
             </section>
         </div>

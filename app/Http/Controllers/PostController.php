@@ -8,7 +8,11 @@ use Illuminate\Http\Request;
 class PostController extends Controller{
 
     public function getBlogIndex(){
-        return view('frontend.blog.index');
+        $posts = Post::paginate(5);
+        foreach ($posts as $post){
+            $post->body = $this->shortenText($post->body, 20);
+        }
+        return view('frontend.blog.index', ['posts' => $posts]);
     }
 
     public function getSinglePost($post_id, $end='frontend'){
@@ -37,6 +41,16 @@ class PostController extends Controller{
             'success' => 'Post successfully created!'
         ]);
 
+    }
+
+    private function shortenText($text, $word_count){
+        if(str_word_count($text,0) > $word_count){
+            $words = str_word_count($text, 2);
+            $pos = array_keys($words);
+            $text = substr($text, 0, $pos[$word_count]). '...';
+
+        }
+        return $text;
     }
 
 
