@@ -12,7 +12,7 @@
                 <nav>
                     <ul>
                         <li><a href="{{ route('admin.blog.create_post') }}" class="btn">New Post</a></li>
-                        <li><a href="" class="btn">Show all posts</a></li>
+                        <li><a href="{{ route('admin.blog.index') }}" class="btn">Show all posts</a></li>
                     </ul>
                 </nav>
             </header>
