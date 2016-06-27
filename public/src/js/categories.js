@@ -77,29 +77,29 @@ function newCategoryCreated(params, success, responseObj) {
     location.reload();
 }
 
-// function startDelete(event) {
-//     // Open Modal here
-//     deleteCategory(event);
-//
-// }
+function startDelete(event) {
+    // Open Modal here
+    deleteCategory(event);
 
-// function deleteCategory(event) {
-//     event.preventDefault();
-//     event.target.removeEventListener('click', startDelete);
-//     var categoryId = event.target.parentNode.parentNode.parentNode.parentNode.previousElementSibling.dataset['id'];
-//     ajax("GET", "/admin/blog/category/" + categoryId + "/delete", null, categoryDeleted, [event.target.parentNode.parentNode.parentNode.parentNode.parentNode]);
-// }
-//
-// function categoryDeleted(params, success, responseObj) {
-//     var article = params[0];
-//     if (success) {
-//         article.style.backgroundColor = "#ffc4be";
-//         setTimeout(function() {
-//             article.remove();
-//             location.reload();
-//         }, 300);
-//     }
-// }
+}
+
+function deleteCategory(event) {
+    event.preventDefault();
+    event.target.removeEventListener('click', startDelete);
+    var categoryId = event.target.parentNode.parentNode.parentNode.parentNode.previousElementSibling.dataset['id'];
+    ajax("GET", "/admin/blog/category/" + categoryId + "/delete", null, categoryDeleted, [event.target.parentNode.parentNode.parentNode.parentNode.parentNode]);
+}
+
+function categoryDeleted(params, success, responseObj) {
+    var article = params[0];
+    if (success) {
+        article.style.backgroundColor = "#ffc4be";
+        setTimeout(function() {
+            article.remove();
+            location.reload();
+        }, 300);
+    }
+}
 
 function ajax(method, url, params, callback, callbackParams) {
     var http;
