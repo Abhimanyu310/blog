@@ -111,5 +111,10 @@ Route::group([
         'as' => 'admin.contact.index'
     ]);
 
+    Route::get('/contact/message/{message_id}/delete', [
+        'uses' => 'ContactMessageController@getDeleteMessage',
+        'as' => 'admin.contact.delete'
+    ]);
+
 });
 

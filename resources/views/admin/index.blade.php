@@ -71,7 +71,8 @@
                     @foreach($contact_messages as $contact_message)
                             <li>
                                 <article data-message="{{ $contact_message->body }}"
-                                         id="{{ $contact_message->id }}">
+                                         data-id="{{ $contact_message->id }}"
+                                                 class="contact-message">
                                     <div class="message-info">
                                         <h3>{{ $contact_message->subject }}</h3>
                                         <span class="info">{{ $contact_message->sender }} |
@@ -109,6 +110,6 @@
     <script type="text/javascript">
         var token = "{{ Session::token() }}"
     </script>
-    <script type="text/javascript" src="{{ URL::to('css/js/modal.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::to('css/js/contact_messages.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('src/js/modal.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('src/js/contact-messages.js') }}"></script>
 @endsection
