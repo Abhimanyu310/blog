@@ -59,29 +59,37 @@
             <header>
                 <nav>
                     <ul>
-                        <li><a href="" class="btn">Show all Messages</a></li>
+                        <li><a href="{{ route('admin.contact.index') }}" class="btn">Show all Messages</a></li>
                     </ul>
                 </nav>
             </header>
             <section>
                 <ul>
-                    <li>No Messages</li>
-                    <li>
-                        <article data-message="BODY" id="ID">
-                            <div class="message-info">
-                                <h3>Message Subject</h3>
-                                <span class="info">Sender name | Date</span>
-                            </div>
-                            <div class="edit">
-                                <nav>
-                                    <ul>
-                                        <li><a href="">View</a></li>
-                                        <li><a href="" class="danger">Delete</a></li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </article>
-                    </li>
+                    @if(count($contact_messages) == 0)
+                        <li>No Messages</li>
+                    @endif
+                    @foreach($contact_messages as $contact_message)
+                            <li>
+                                <article data-message="{{ $contact_message->body }}"
+                                         id="{{ $contact_message->id }}">
+                                    <div class="message-info">
+                                        <h3>{{ $contact_message->subject }}</h3>
+                                        <span class="info">{{ $contact_message->sender }} |
+                                            {{ $contact_message->created_at }}</span>
+                                    </div>
+                                    <div class="edit">
+                                        <nav>
+                                            <ul>
+                                                <li><a href="">View</a></li>
+                                                <li><a href="" class="danger">Delete</a></li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </article>
+                            </li>
+
+                    @endforeach
+
                 </ul>
             </section>
         </div>

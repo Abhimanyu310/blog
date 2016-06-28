@@ -105,5 +105,11 @@ Route::group([
         'uses' => 'CategoryController@getDeleteCategory',
         'as' => 'admin.blog.category.delete'
     ]);
+
+    Route::get('/contact/messages', [
+        'uses' => 'ContactMessageController@getContactMessageIndex',
+        'as' => 'admin.contact.index'
+    ]);
+
 });
 
