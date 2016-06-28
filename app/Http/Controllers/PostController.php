@@ -13,6 +13,7 @@ class PostController extends Controller{
         foreach ($posts as $post){
             $post->body = $this->shortenText($post->body, 20);
         }
+        
         return view('frontend.blog.index', ['posts' => $posts]);
     }
 
