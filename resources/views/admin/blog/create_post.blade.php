@@ -28,7 +28,7 @@
                 </select>
                 <button type="button" class="btn">Add Category</button>
                 <div class="added-categories">
-                    <ul>dummy</ul>
+                    <ul></ul>
                 </div>
                 <input type="hidden" name="categories" id="categories">
             </div>
@@ -47,6 +47,6 @@
 
 
 @section('scripts')
-    <script type="text/javascript" href="{{ URL::to('src/js/posts.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::to('src/js/posts.js') }}"></script>
 @endsection
 

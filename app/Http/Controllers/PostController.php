@@ -70,6 +70,13 @@ class PostController extends Controller{
         $post->body = $request['body'];
         $post->save();
 
+        if(strlen($request['categories']) > 0){
+            $categoryIDs = explode(',', $request['categories']);
+            foreach ($categoryIDs as $categoryID){
+                $post->categories()->attach($categoryID);
+            }
+        }
+
         return redirect()->route('admin.index')->with([
             'success' => 'Post successfully created!'
         ]);
@@ -89,6 +96,14 @@ class PostController extends Controller{
         $post->author = $request['author'];
         $post->body = $request['body'];
         $post->update();
+
+        $post->categories()->detach();
+        if(strlen($request['categories']) > 0){
+            $categoryIDs = explode(',', $request['categories']);
+            foreach ($categoryIDs as $categoryID){
+                $post->categories()->attach($categoryID);
+            }
+        }
 
         return redirect()->route('admin.index')->with([
             'success' => 'Post successfully updated!'
