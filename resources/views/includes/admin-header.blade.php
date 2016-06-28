@@ -11,7 +11,7 @@
             <li {{ Request::is('admin/contact/*') ? 'class=active' : '' }}>
                 <a href="{{ route('admin.contact.index') }}">Contact Messages</a>
             </li>
-            <li><a href="#">Logout</a></li>
+            <li><a href="{{ route('admin.logout') }}">Logout</a></li>
         </ul>
     </nav>
 </header>

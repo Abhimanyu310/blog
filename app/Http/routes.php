@@ -40,13 +40,29 @@ Route::post('/contact/sendmail', [
     'as' => 'contact.send'
 ]);
 
+Route::post('/admin/login', [
+    'uses' => 'AdminController@postLogin',
+    'as' => 'admin.login'
+]);
+
+Route::get('/admin/login', [
+    'uses' => 'AdminController@getLogin',
+    'as' => 'admin.login'
+]);
+
 Route::group([
-    'prefix' => '/admin'
+    'prefix' => '/admin',
+    'middleware' => 'auth'
     ], function() {
 
     Route::get('/', [
        'uses' => 'AdminController@getIndex',
         'as' => 'admin.index'
+    ]);
+
+    Route::get('/logout', [
+        'uses' => 'AdminController@getLogout',
+        'as' => 'admin.logout'
     ]);
 
 
