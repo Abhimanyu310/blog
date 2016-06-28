@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\ContactMessage;
+use App\Events\MessageSent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Event;
 
 class ContactMessageController extends Controller
 {
@@ -29,6 +31,8 @@ class ContactMessageController extends Controller
         $message->subject = $request['subject'];
         $message->body = $request['message'];
         $message->save();
+
+        Event::fire(new MessageSent($message));
         return redirect()->route('contact')->with(['success' => 'Message Successfully sent!']);
     }
 }
