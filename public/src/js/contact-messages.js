@@ -46,6 +46,7 @@ function messageDeleted(params, success, responseObj) {
         article.style.backgroundColor = "#ffc4be";
         setTimeout(function() {
             article.remove();
+            location.reload();
         }, 300);
     }
 }

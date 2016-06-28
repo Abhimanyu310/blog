@@ -34,9 +34,8 @@
             </div>
             <div class="input-group">
                 <label for="body">Body</label>
-                <textarea name="body" id="body" rows="12" {{ $errors->has('body') ? 'class=has-error' : '' }}>
-                    {{ Request::old('body') }}
-                </textarea>
+                <textarea name="body" id="body" rows="12" {{ $errors->has('body') ? 'class=has-error' : '' }}
+                >{{ Request::old('body') }}</textarea>
             </div>
             <button type="submit" class="btn">Create Post</button>
             <input type="hidden" name="_token" value="{{ Session::token() }}">

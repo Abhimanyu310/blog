@@ -14,7 +14,7 @@
                 No Messages
             @endif
             @foreach($contact_messages as $contact_message)
-                <article date-message="{{ $contact_message->body }}" date-id="{{ $contact_message->id }}"
+                <article data-message="{{ $contact_message->body }}" data-id="{{ $contact_message->id }}"
                          class="contact-message">
                     <div class="message-info">
                         <h3>{{ $contact_message->subject }}</h3>
@@ -24,8 +24,8 @@
                     <div class="edit">
                         <nav>
                             <ul>
-                                <li><a href="#">Show Message</a></li>
-                                <li><a href="#" class="danger">Delete</a></li>
+                                <li><a href="">Show Message</a></li>
+                                <li><a href="" class="danger">Delete</a></li>
                             </ul>
                         </nav>
                     </div>
